@@ -37,6 +37,7 @@ function runDownload() {
 }
 
 function apiCall(data) {
+    document.getElementById('initial').innerHTML = '<img src="images/loading.gif">';
      $.post({
             url: '/api',
             data: JSON.stringify(data),
