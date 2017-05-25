@@ -10,35 +10,35 @@
                 <span>Upload a JSON file</span>
                 <p>
                     <input type='file' accept='.json' id='uploadData'></input>
-                    <button id='uploadButton' class='notshown'>Calculate!</button>
+                    <button id='uploadButton' class='notshown'>Create charts!</button>
                 </p>
             </div>
             <div>
                 <div>
                     <p>Paste JSON</p>
                     <textarea rows='15' columns='10' id='pastedData'></textarea>
-                    <button id='pastedButton'>Calculate!</button>
+                    <button id='pastedButton'>Create charts!</button>
                 </div>
             </div>
             <div>
-                <span>Use JSON data from <a href='https://randomuser.me/' target='_blank'>randomuser.me</a></span>
                 <p>
+                    <span>Use JSON data from <a href='https://randomuser.me/' target='_blank'>randomuser.me</a></span>
                     <span>with </span>
                     <input type="number" min='10' max='1000' id='inputNum'>
                     <span> users</span>
                 </p>
-                <button id='downloadButton'>Calculate!</button>
+                <button id='downloadButton'>Create charts!</button>
             </div>
         </div>
-        <div id='chart1'></div>
-        <div id='chart2'></div>
-        <div id='chart3'></div>
-        <div id='chart4'></div>
-        <div id='chart5'></div>
-        <div id='chart6'></div>
-        <div id='chart7'></div>
-    </body>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js'></script>    
+        <div class='charts'>
+            <div id='chart1'></div>
+            <div id='chart2'></div>
+            <div id='chart3'></div>
+            <div id='chart5'></div>
+            <div id='chart4'></div>
+        </div>
+        <button class='notshown' id='reload'>Start over</button>
+    </body>  
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type='text/javascript' src='/javascripts/charts.js'></script>   

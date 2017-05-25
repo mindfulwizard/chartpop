@@ -11,8 +11,8 @@ function chart1(dataObj) {
         ['Male', dataObj.data.maleCount]
     ]);
     const options = {'title': dataObj.title,
-                       'width':400,
-                       'height':300};
+                       'width':450,
+                       'height':230};
     const chart = new google.visualization.PieChart(document.getElementById('chart1'));
     chart.draw(data, options);
 }
@@ -26,8 +26,8 @@ function chart2(dataObj) {
         ['N-Z', dataObj.data.nzCount]
     ]);
     const options = {'title': dataObj.title,
-                       'width':400,
-                       'height':300};
+                       'width':450,
+                       'height':230};
     const chart = new google.visualization.PieChart(document.getElementById('chart2'));
     chart.draw(data, options);
 }
@@ -41,8 +41,8 @@ function chart3(dataObj) {
         ['N-Z', dataObj.data.nzCount]
     ]);
     const options = {'title': dataObj.title,
-                       'width':400,
-                       'height':300};
+                       'width':450,
+                       'height':230};
     const chart = new google.visualization.PieChart(document.getElementById('chart3'));
     chart.draw(data, options);
 }
@@ -56,7 +56,7 @@ function chart4(dataObj) {
     const infoArr = dataObj.data.state
         .map(stateObj => [stateObj.name, toNum(stateObj.value1), toNum(stateObj.value2)]);
     data.addRows(infoArr);
-    const options = {'title':'Percentage Male/Female in 10 Most Populous States in %',
+    const options = {'title':'Percentage Male/Female in 10 Most Populous States',
                        'width':700,
                        'height':400};
     const chart = new google.visualization.BarChart(document.getElementById('chart4'));
@@ -71,8 +71,8 @@ function chart5(dataObj) {
         .map(rangeObj => [rangeObj.range, rangeObj.count]);
     data.addRows(infoArr);
     const options = {'title':'Percentage people by Age Range',
-                       'width':400,
-                       'height':300};
+                       'width':450,
+                       'height':400};
     const chart = new google.visualization.PieChart(document.getElementById('chart5'));
     chart.draw(data, options);
 }

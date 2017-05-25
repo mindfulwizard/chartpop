@@ -7,6 +7,11 @@ function fetchRandomData(num) {
     .then(res => res.json())
 }
 
+function reload() {
+    document.location.reload();
+    history.replaceState({}, document.title, ".");
+}
+
 function runPasted() {
     const pastedData = JSON.parse(document.getElementById('pastedData').value);
     apiCall(pastedData);
@@ -37,19 +42,20 @@ function apiCall(data) {
             data: JSON.stringify(data),
             success: function(data) {
                 console.log(data);
-                runCharts(data.results);
+                createCharts(data.results);
+                document.getElementById('reload').className = 'shown';
             },
             headers: {
-                "content-type": "application/json",
+                'content-type': 'application/json',
             },
             //expected response type
             dataType: 'json',
         });
 }
 
-function runCharts(dataArray) {
+function createCharts(dataArray) {
     document.getElementById('initial').style.display = 'none';
-    document.location.hash = "chartview";
+    document.location.hash = 'chartview';
     chart1(dataArray[0]);
     chart2(dataArray[1]);
     chart3(dataArray[2]);
@@ -63,4 +69,5 @@ $(document).ready(() => {
     document.getElementById('downloadButton').addEventListener('click', runDownload);
     document.getElementById('uploadData').addEventListener('change', displayButton);
     document.getElementById('uploadButton').addEventListener('click', runUpload);
+    document.getElementById('reload').addEventListener('click', reload);
  });
