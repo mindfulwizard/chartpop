@@ -24,5 +24,3 @@ Back End
 Please expose a REST API endpoint that takes the same Random User Generator JSON data and a file format as input, and returns a file containing the same output data (percentages) displayed in the charts described in the Front End section, but as formatted data rather than charts. Supported file formats should include JSON, plain text, and XML. For example, if the user requests a plain text file, it should contain a line like “Percentage female versus male: 66.6%”. Feel free to include other file formats if you like. Please use the same coding style you used for the front end.
 
 For bonus points, instead of requiring the user to specify the file format, determine it automatically from the “Accept:” header in the HTTP request.
-
-//define return data format

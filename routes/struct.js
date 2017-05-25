@@ -1,83 +1,71 @@
 const reducer = require('./reducer');
-
-function getTenMostPopulous(obj) {
-    return Object.keys(obj).sort((a, b) => obj[a] - obj[b]).slice(-10).reverse();
-}
-
-function percent(a, b) {
-    //need to round
-    if(typeof b === 'object') {
-        const total = Object.keys(b).map((x) => b[x]).reduce((a,b) => a + b);
-        return (a/total) * 100;
-    }
-    return (a/(a + b)) * 100;
-}
+const helper = require('./helper')
 
 function struct(data) {
-    const finalData = {results: []};
+    const finalData = {responseData: {results: []}};
 
     const percentFemale = reducer.percentageFemale(data);
-    finalData.results[0] = {
+    finalData.responseData.results[0] = {
         title: 'Percentage Female vs Male',
         data: {
-            value: percent(percentFemale.female/percentFemale.male),
+            value1: helper.percent(percentFemale.female, percentFemale.male) + '%',
+            value2: helper.percent(percentFemale.male, percentFemale.female) + '%',
             femaleCount: percentFemale.female,
             maleCount: percentFemale.male
         }
     };
 
     const percentFirst = reducer.percentageFirst(data);
-    finalData.results[1] = {
+    finalData.responseData.results[1] = {
         title: 'Percentage First Names Starting with A-M vs N-Z',
         data: {
-            value: percent(percentFirst.AM/percentFirst.NZ),
+            value1: helper.percent(percentFirst.AM, percentFirst.NZ)  + '%',
+            value2: helper.percent(percentFirst.NZ, percentFirst.AM)  + '%',
             amCount: percentFirst.AM,
             nzCount: percentFirst.NZ    
         }
     };
 
     const percentLast = reducer.percentageLast(data);
-    finalData.results[2] = {
+    finalData.responseData.results[2] = {
         title: 'Percentage Last Names Starting with A-M vs N-Z',
         data: {
-            value: percent(percentLast.AM/percentLast.NZ),
+            value1: helper.percent(percentLast.AM, percentLast.NZ)  + '%',
+            value2: helper.percent(percentLast.NZ, percentLast.AM)  + '%',
             amCount: percentLast.AM,
             nzCount: percentLast.NZ
         }
     };
 
     const percentStates = reducer.percentageStates(data);
-    finalData.results[3] = {
+    finalData.responseData.results[3] = {
         title: 'Percentage Female vs Male in Ten Most Populous States',
         data: {
-            states: getTenMostPopulous(percentStates.total).map((state) => {
+            state: helper.getTenMostPopulous(percentStates.total).map((stateName) => {
                 return {
-                    name: state,
-                    value: percent(percentStates.female[state], percentStates.male[state]),
-                    femaleCount: percentStates.female[state],
-                    maleCount: percentStates.male[state],
+                    name: helper.capitalize(stateName),
+                    value1: helper.percent(percentStates.female[stateName], percentStates.male[stateName])  + '%',
+                    value2: helper.percent(percentStates.male[stateName], percentStates.female[stateName])  + '%',
+                    femaleCount: percentStates.female[stateName],
+                    maleCount: percentStates.male[stateName],
                 }
             })
         }
     };
 
     const percentAge = reducer.percentageAge(data);
-    const updatedRange = function(obj) {
-        const newObj = {};
-        for (const key in obj) {
-            newObj[key] = {
-                value: percent(obj[key], obj),
-                count: obj[key]
-            }
-        }
-        return newObj;
-    }(percentAge);
-
-    finalData.results[4] = { 
+    finalData.responseData.results[4] = { 
         title: 'Percentage People In Each Age Range',
-        data: updatedRange
+        data: {
+            entry: Object.keys(percentAge).map(key => {
+                return {
+                    range: key,
+                    value: helper.percent(percentAge[key], percentAge) + '%',
+                    count: percentAge[key]
+                }
+            })
+        }
     }
-
     return finalData;
 }
 

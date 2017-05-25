@@ -51,7 +51,7 @@ function percentageAge(dataArray) {
             const age = parseInt(moment(dob, 'YYYY-MM-DD').fromNow(true).split(' ')[0]);
             switch(true) {
                 case (age < 21): 
-                    acc['0-20']++;
+                    acc['0-20']++; 
                     break;
                 case (age > 20 && age < 41): 
                     acc['21-40']++;
