@@ -1,6 +1,6 @@
-New Classrooms Software Developer Trial Project
+#New Classrooms Software Developer Trial Project
 
-Front End
+*Front End*
 
 Please make a single-page web app that shows infographics about a set of people based on JSON data from Random User Generator (https://randomuser.me/).
 
@@ -19,7 +19,7 @@ Feel free to be as fancy as you like with page style, layout, and functionality.
 
 For bonus points, think of any other statistics you might find interesting and display them in the most effective way possible.
 
-Back End
+*Back End*
 
 Please expose a REST API endpoint that takes the same Random User Generator JSON data and a file format as input, and returns a file containing the same output data (percentages) displayed in the charts described in the Front End section, but as formatted data rather than charts. Supported file formats should include JSON, plain text, and XML. For example, if the user requests a plain text file, it should contain a line like “Percentage female versus male: 66.6%”. Feel free to include other file formats if you like. Please use the same coding style you used for the front end.
 
