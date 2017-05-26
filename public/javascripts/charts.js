@@ -76,3 +76,5 @@ function chart5(dataObj) {
     const chart = new google.visualization.PieChart(document.getElementById('chart5'));
     chart.draw(data, options);
 }
+
+const chartrunner = [chart1, chart2, chart3, chart4, chart5];

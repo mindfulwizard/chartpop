@@ -5,11 +5,11 @@ function getTenMostPopulous(obj) {
 }
 
 function percent(a = 0, b = 0) {
+    let total = a + b;
     if(typeof b === 'object') {
-        const total = Object.keys(b).map(x => b[x]).reduce((a,b) => a + b);
-        return roundTo(((a/total) * 100), 2);
+        total = Object.keys(b).map(x => b[x]).reduce((a,b) => a + b);
     }
-    return roundTo(((a/(a + b)) * 100), 2);
+    return roundTo(((a/total) * 100), 2);
 }
 
 function capitalize(str) {

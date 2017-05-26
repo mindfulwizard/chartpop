@@ -57,11 +57,9 @@ function apiCall(data) {
 function createCharts(dataArray) {
     document.getElementById('initial').style.display = 'none';
     document.location.hash = 'chartview';
-    chart1(dataArray[0]);
-    chart2(dataArray[1]);
-    chart3(dataArray[2]);
-    chart4(dataArray[3]);
-    chart5(dataArray[4]);
+    dataArray.forEach((el, ind) => {
+        chartrunner[ind](el);
+    });
 }
 
 $(document).ready(() => {

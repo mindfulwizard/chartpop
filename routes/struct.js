@@ -15,7 +15,7 @@ function struct(data) {
         }
     };
 
-    const percentFirst = reducer.percentageFirst(data);
+    const percentFirst = reducer.percentageName(data, 'first');
     finalData.responseData.results[1] = {
         title: 'Percentage First Names Starting with A-M vs N-Z',
         data: {
@@ -26,7 +26,7 @@ function struct(data) {
         }
     };
 
-    const percentLast = reducer.percentageLast(data);
+    const percentLast = reducer.percentageName(data, 'last');
     finalData.responseData.results[2] = {
         title: 'Percentage Last Names Starting with A-M vs N-Z',
         data: {

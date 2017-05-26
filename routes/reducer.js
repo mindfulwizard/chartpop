@@ -9,19 +9,10 @@ function percentageFemale(dataArray) {
         }, {male: 0, female: 0});
 }
 
-function percentageFirst(dataArray) {
+function percentageName(dataArray, whichName) {
     return dataArray
         .reduce((acc, curr) => {
-            const letter = curr['name']['first'][0];
-            firstHalfAlphabet.test(letter) ? acc.AM++ : acc.NZ++;
-            return acc;
-        }, {AM: 0, NZ: 0});
-}
-
-function percentageLast(dataArray) {
-   return dataArray
-        .reduce((acc, curr) => {
-            const letter = curr['name']['last'][0];
+            const letter = curr['name'][whichName][0];
             firstHalfAlphabet.test(letter) ? acc.AM++ : acc.NZ++;
             return acc;
         }, {AM: 0, NZ: 0});
@@ -76,4 +67,4 @@ function percentageAge(dataArray) {
         }, {'0-20': 0, '21-40': 0, '41-60': 0, '61-80': 0, '81-100': 0, '100+': 0});
 }
 
-module.exports = {percentageFemale, percentageFirst, percentageLast, percentageStates, percentageAge};
+module.exports = {percentageFemale, percentageName, percentageStates, percentageAge};
